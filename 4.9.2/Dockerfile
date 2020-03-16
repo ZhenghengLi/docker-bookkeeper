@@ -10,7 +10,6 @@ ENV BOOKIE_JOURNAL_DIR=/bookkeeper/dataJournal \
     BOOKIE_CONF_DIR=/bookkeeper/conf \
     BOOKIE_PORT=3181 \
     BOOKIE_ADVERTISE_ADDRESS=localhost \
-    BOOKIE_HTTP_SERVER_ENABLED=true \
     ZK_SERVERS=localhost:2181 \
     ZK_CHROOT=ledgers \
     ZK_TIMEOUT=10000 \
