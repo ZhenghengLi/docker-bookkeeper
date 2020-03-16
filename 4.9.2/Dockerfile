@@ -1,6 +1,6 @@
 FROM openjdk:8-jre-slim
 
-ARG BK_VERSION=4.10.0
+ARG BK_VERSION=4.9.2
 ARG DISTRO_NAME=bookkeeper-server-${BK_VERSION}-bin
 ARG DISTRO_URL=https://archive.apache.org/dist/bookkeeper/bookkeeper-${BK_VERSION}/${DISTRO_NAME}.tar.gz
 
