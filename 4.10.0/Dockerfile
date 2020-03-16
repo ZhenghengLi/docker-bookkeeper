@@ -8,8 +8,13 @@ ENV BOOKIE_JOURNAL_DIR=/bookkeeper/dataJournal \
     BOOKIE_LEDGER_DIR=/bookkeeper/dataLedger \
     BOOKIE_LOG_DIR=/bookkeeper/logs \
     BOOKIE_CONF_DIR=/bookkeeper/conf \
+    BOOKIE_PORT=3181 \
+    BOOKIE_ADVERTISE_ADDRESS=localhost \
+    BOOKIE_HTTP_SERVER_ENABLED=true \
     ZK_SERVERS=localhost:2181 \
-    ZK_CHROOT=ledgers
+    ZK_CHROOT=ledgers \
+    ZK_TIMEOUT=10000 \
+    ZK_ENABLE_SECURITY=false
 
 RUN set -x \
 # install dependencies
@@ -54,4 +59,4 @@ ENV PATH=/opt/"bookkeeper-server-${BK_VERSION}"/bin:$PATH \
 USER bookkeeper
 
 ENTRYPOINT [ "/bin/bash", "/scripts/entrypoint.sh" ]
-CMD ["bash"]
+CMD ["bookkeeper", "localbookie", "4"]

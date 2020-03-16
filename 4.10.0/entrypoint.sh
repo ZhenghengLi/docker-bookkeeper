@@ -5,15 +5,13 @@ if [[ ! -f "$BOOKIE_CONF" ]]; then
     {
         echo "journalDirectories=$BOOKIE_JOURNAL_DIR"
         echo "ledgerDirectories=$BOOKIE_LEDGER_DIR"
-        echo "zkServers=$ZK_SERVERS"
+        echo "bookiePort=$BOOKIE_PORT"
+        echo "advertisedAddress=$BOOKIE_ADVERTISE_ADDRESS"
+        echo "httpServerEnabled=$BOOKIE_HTTP_SERVER_ENABLED"
         echo "metadataServiceUri=zk+hierarchical://$ZK_SERVERS/$ZK_CHROOT"
+        echo "zkTimeout=$ZK_TIMEOUT"
+        echo "zkEnableSecurity=$ZK_ENABLE_SECURITY"
     } >> "$BOOKIE_CONF"
-
-    # optional parameters
-    # if [[ -n $ZOO_4LW_COMMANDS_WHITELIST ]]; then
-    #     echo "4lw.commands.whitelist=$ZOO_4LW_COMMANDS_WHITELIST" >> "$BOOKIE_CONF"
-    # fi
-
 fi
 
 exec "$@"
