@@ -13,7 +13,10 @@ ENV BOOKIE_JOURNAL_DIR=/bookkeeper/dataJournal \
     ZK_SERVERS=localhost:2181 \
     ZK_CHROOT=ledgers \
     ZK_TIMEOUT=10000 \
-    ZK_ENABLE_SECURITY=false
+    ZK_ENABLE_SECURITY=false \
+    BOOKIE_HTTP_SERVER_ENABLED=true \
+    BOOKIE_HTTP_SERVER_PORT=3180 \
+    BOOKIE_EXTRA_OPTS=-Dvertx.cacheDirBase=/tmp/vertx
 
 RUN set -x \
 # install dependencies
