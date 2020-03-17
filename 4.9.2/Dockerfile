@@ -52,8 +52,8 @@ RUN set -x \
 ## add default work user
 && groupadd bookkeeper --gid=1000 \
 && useradd -m -g bookkeeper --uid=1000 bookkeeper \
-&& chown bookkeeper:bookkeeper "${BOOKIE_JOURNAL_DIR}" "${BOOKIE_LEDGER_DIR}" "${BOOKIE_LOG_DIR}" \
-&& chmod 777 "${BOOKIE_CONF_DIR}"
+&& chown -R bookkeeper:bookkeeper "${BOOKIE_JOURNAL_DIR}" "${BOOKIE_LEDGER_DIR}" "${BOOKIE_CONF_DIR}" "${BOOKIE_LOG_DIR}" \
+&& chmod 777 "${BOOKIE_CONF_DIR}" "${BOOKIE_LOG_DIR}"
 
 ENV PATH=/opt/"bookkeeper-server-${BK_VERSION}"/bin:$PATH \
     BOOKIE_CONF="${BOOKIE_CONF_DIR}/bk_server.conf"
