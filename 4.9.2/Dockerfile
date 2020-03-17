@@ -20,6 +20,8 @@ ENV BOOKIE_JOURNAL_DIR=/bookkeeper/dataJournal \
 
 RUN set -x \
 # install dependencies
+&& sed -i "s/deb.debian.org/mirrors.huaweicloud.com/g" /etc/apt/sources.list \
+&& sed -i "s/security.debian.org/mirrors.huaweicloud.com/g" /etc/apt/sources.list \
 && apt-get update \
 && apt-get install -y --no-install-recommends ca-certificates netcat wget gnupg \
 # download and check
