@@ -41,19 +41,18 @@ RUN set -x \
 && apt-get autoremove -y wget gnupg \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/* \
-# create data directories
-&& mkdir -pv "${BOOKIE_JOURNAL_DIR}" "${BOOKIE_LEDGER_DIR}" "${BOOKIE_LOG_DIR}" "${BOOKIE_CONF_DIR}"
-
-COPY entrypoint.sh /scripts/
-
-RUN set -x \
 # set root password for runtime debug
 && echo "root:20180427" | chpasswd \
 ## add default work user
 && groupadd bookkeeper --gid=1000 \
 && useradd -m -g bookkeeper --uid=1000 bookkeeper \
+# create data directories
+&& mkdir -pv "${BOOKIE_JOURNAL_DIR}" "${BOOKIE_LEDGER_DIR}" "${BOOKIE_LOG_DIR}" "${BOOKIE_CONF_DIR}" \
+# change owner
 && chown -R bookkeeper:bookkeeper "${BOOKIE_JOURNAL_DIR}" "${BOOKIE_LEDGER_DIR}" "${BOOKIE_CONF_DIR}" "${BOOKIE_LOG_DIR}" \
 && chmod 777 "${BOOKIE_CONF_DIR}" "${BOOKIE_LOG_DIR}"
+
+COPY entrypoint.sh /scripts/
 
 ENV PATH=/opt/"bookkeeper-server-${BK_VERSION}"/bin:$PATH \
     BOOKIE_CONF="${BOOKIE_CONF_DIR}/bk_server.conf"
