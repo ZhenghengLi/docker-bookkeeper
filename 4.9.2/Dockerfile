@@ -54,7 +54,7 @@ RUN set -x \
 && chown -R bookkeeper:bookkeeper "${BOOKIE_JOURNAL_DIR}" "${BOOKIE_LEDGER_DIR}" "${BOOKIE_CONF_DIR}" "${BOOKIE_LOG_DIR}" \
 && chmod 777 "${BOOKIE_CONF_DIR}" "${BOOKIE_LOG_DIR}"
 
-COPY entrypoint.sh /scripts/
+COPY entrypoint.sh check_cnxn_address.sh /scripts/
 
 ENV PATH=/opt/"bookkeeper-server-${BK_VERSION}"/bin:$PATH \
     BOOKIE_CONF="${BOOKIE_CONF_DIR}/bk_server.conf"
