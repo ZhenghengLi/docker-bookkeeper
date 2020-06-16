@@ -18,6 +18,6 @@ function check_cnxn_address {
 }
 
 until check_cnxn_address $@; do
-    sleep ${2:-1}
+    sleep 1
     echo "continue checking ..."
 done
