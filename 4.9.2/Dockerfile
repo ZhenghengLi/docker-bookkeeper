@@ -56,7 +56,7 @@ RUN set -x \
 
 COPY entrypoint.sh check_cnxn_address.sh /scripts/
 
-ENV PATH=/opt/"bookkeeper-server-${BK_VERSION}"/bin:$PATH \
+ENV PATH=/scripts:/opt/"bookkeeper-server-${BK_VERSION}"/bin:$PATH \
     BOOKIE_CONF="${BOOKIE_CONF_DIR}/bk_server.conf"
 
 USER bookkeeper
